@@ -2,7 +2,7 @@ TARGET = libvenice
 LIB_NAME = venice
 PKG_NAME = libvenice
 
-PREFIX =
+PREFIX ?=
 
 UNAME := $(shell uname)
 
