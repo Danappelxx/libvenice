@@ -2,7 +2,7 @@ TARGET = libvenice
 LIB_NAME = venice
 PKG_NAME = libvenice
 
-SYMLINK_LOCATION =
+PREFIX =
 
 UNAME := $(shell uname)
 
@@ -32,14 +32,10 @@ ifeq ($(UNAME), Linux)
 	# copy .a
 	cp lib$(LIB_NAME).a $(TARGET)/usr/local/lib/
 endif
-ifeq ($(SYMLINK_LOCATION),)
-	# SYMLINK_LOCATION is not defined, so copy files
-	cp -r $(TARGET)/usr/* /usr/
-else
+	cp -r $(TARGET)/usr/local/* $(PREFIX)/usr/local/
 	# SYMLINK_LOCATION is defined, so symlink everything to it
-	ln -s $(SYMLINK_LOCATION)/include/uri_parser uri_parser/usr/local/include/uri_parser
-	ln -s $(SYMLINK_LOCATION)/lib/liburi_parser.dylib uri_parser/usr/local/lib/liburi_parser.dylib
-endif
+	# ln -s $(SYMLINK_LOCATION)/include/uri_parser uri_parser/usr/local/include/uri_parser
+	# ln -s $(SYMLINK_LOCATION)/lib/liburi_parser.dylib uri_parser/usr/local/lib/liburi_parser.dylib
 
 
 package:
