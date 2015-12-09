@@ -2,7 +2,7 @@ TARGET = libvenice
 LIB_NAME = venice
 PKG_NAME = libvenice
 
-PREFIX ?=
+PREFIX ?= /usr/local
 
 UNAME := $(shell uname)
 
@@ -33,7 +33,7 @@ ifeq ($(UNAME), Linux)
 	cp lib$(LIB_NAME).a $(TARGET)/usr/local/lib/
 endif
 	mkdir -p $(PREFIX)/usr/local/
-	cp -r $(TARGET)/usr/local/* $(PREFIX)/usr/local/
+	cp -r $(TARGET)/usr/local/* $(PREFIX)/
 	# SYMLINK_LOCATION is defined, so symlink everything to it
 	# ln -s $(SYMLINK_LOCATION)/include/uri_parser uri_parser/usr/local/include/uri_parser
 	# ln -s $(SYMLINK_LOCATION)/lib/liburi_parser.dylib uri_parser/usr/local/lib/liburi_parser.dylib
